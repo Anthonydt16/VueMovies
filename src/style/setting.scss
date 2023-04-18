@@ -1,0 +1,26 @@
+$color-primary: #ffffff;
+$color-secondary: #000000;
+$color-tertiary: #54fb00;
+$margin : 20px;
+
+body{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', serif;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  color: $color-secondary;
+  div#app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a{
+      text-decoration: none;
+    }
+  }
+
+}
