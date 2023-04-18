@@ -1,15 +1,16 @@
 .navbar{
-  background-color: $color-secondary;
-  width: 100vw;
-  text-align: center;
+  display: flex;
   a{
-    margin-left: $margin;
-    color: $color-primary;
+    color: $white;
+    border-radius: 10px;
+    width: 102px;
+    text-align: center;
+    margin-right: 5px;
     text-decoration: none;
     &:hover{
-      text-decoration: underline;
-      color: $color-tertiary;
+      text-decoration: none;
+      background-color: $black;
+
     }
   }
-
 }

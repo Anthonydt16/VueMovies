@@ -1,9 +1,8 @@
 <template>
   <div class="navbar">
-    <router-link to="/">Home</router-link>
-    <router-link to="/page">page</router-link>
+    <router-link to="/">Accueil</router-link>
+    <router-link to="/ajout">Ajout</router-link>
   </div>
-
 
 </template>
 

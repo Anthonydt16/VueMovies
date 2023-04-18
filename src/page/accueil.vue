@@ -1,32 +1,25 @@
 <template>
   <div class="accueil">
-    <h1>Accueil</h1>
-    <h2>Ajouter un film</h2>
-    <div class="form">
-      <label for="name">Nom du film</label>
-      <input type="text" v-model="name">
-      <label for="year">Année</label>
-      <input type="number" v-model="year" min="1900" max="2023" step="1">
-      <button @click="addMovie">Ajouter</button>
-    </div>
-    <h2>Liste des films</h2>
-    <div v-for="movie in movies">
-      {{ movie.name }} ({{ movie.year }})<button @click="movies.splice(movies.indexOf(movie), 1)">Supprimer</button>
-      <button @click="editMovie(movie)">Modifier</button>
-    </div>
-    <h2>Recherche dans la liste</h2>
-    <div>
+    <h1>Vue Movie</h1>
+    <div class="search">
       <input type="text" v-model="search">
-      <div v-for="movie in moviesFiltered">
-        {{ movie.name }} ({{ movie.year }})
+      <div class="container_cards">
+        <div class="card" v-for="movie in moviesFiltered">
+          <Card :film="movie" />
+        </div>
       </div>
+
     </div>
+
   </div>
 </template>
 
 <script>
+import Card from "@/components/card.vue";
+
 export default {
   name: "accueil",
+  components: {Card},
   data() {
     return {
       movies: [
@@ -49,7 +42,10 @@ export default {
               id: 2,
               name: "Aventure"
             }
-          ]
+          ],
+          rating: 4.5,
+          poster: "https://proxymedia.woopic.com/api/v1/images/822%2Faudiovisual%2Fmovie%2F277%2F3b7%2Fc6952dbfb3b7cdfcd043329e92%2Fmovies-289305-21954066.jpg",
+          synopsis: "Frodon Sacquet, un Hobbit, hérite d'un puissant anneau. Il est alors entraîné dans une aventure épique pour détruire l'anneau avant que Sauron, le Seigneur des Ténèbres, ne le récupère."
         },
         {
            id: 2,
@@ -70,7 +66,11 @@ export default {
               id: 2,
               name: "Aventure"
             }
-          ]
+          ],
+          rating: 4.5,
+          poster: "https://proxymedia.woopic.com/api/v1/images/822%2Faudiovisual%2Fmovie%2F277%2F3b7%2Fc6952dbfb3b7cdfcd043329e92%2Fmovies-289305-21954066.jpg",
+          synopsis: "Frodon Sacquet, un Hobbit, hérite d'un puissant anneau. Il est alors entraîné dans une aventure épique pour détruire l'anneau avant que Sauron, le Seigneur des Ténèbres, ne le récupère."
+
         },
         {
            id: 3,
@@ -91,7 +91,10 @@ export default {
               id: 2,
               name: "Aventure"
             }
-          ]
+          ],
+          rating: 4.5,
+          poster: "https://proxymedia.woopic.com/api/v1/images/822%2Faudiovisual%2Fmovie%2F277%2F3b7%2Fc6952dbfb3b7cdfcd043329e92%2Fmovies-289305-21954066.jpg",
+          synopsis: "Frodon Sacquet, un Hobbit, hérite d'un puissant anneau. Il est alors entraîné dans une aventure épique pour détruire l'anneau avant que Sauron, le Seigneur des Ténèbres, ne le récupère."
         }
       ],
       moviesFiltered: [],
@@ -101,31 +104,13 @@ export default {
     }
   },
   methods: {
-    addMovie() {
-      if (this.name !== "" || this.year !== 0) {
-        this.movies.push({
-          id : this.movies.length + 1,
-          name: this.name,
-          year: this.year
-        })
-      }
-    },
     searchMovie() {
       this.moviesFiltered =  this.movies.filter(movie => movie.name.includes(this.search))
     },
-    editMovie(movie) {
-      //remplie les champs du formulaire avec les données du film
-      this.name = movie.name
-      this.year = movie.year
-      //supprime le film de la liste
-      this.movies.splice(this.movies.indexOf(movie), 1)
-      console.log(movie)
-
-    }
 
   },
   mounted() {
-    this.addMovie()
+    this.moviesFiltered = this.movies
   },
   watch: {
     search() {

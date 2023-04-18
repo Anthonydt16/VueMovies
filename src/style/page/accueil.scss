@@ -1,15 +1,30 @@
 .accueil{
   display: flex;
   flex-direction: column;
-  align-items: start;
-  background-color: $color-primary;
-  padding: 50px;
-  .form{
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+  align-items: center;
+  h1{
+    font-size: 3.3rem;
+    text-shadow: 2px 3px 0px $color-1;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  .search{
+    .container_cards{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
     input{
-      margin-bottom: $margin;
+      padding: 1px 10px;
+      border-radius: 10px 10px 0 0;
+      border: none;
+      font-size: 1.5rem;
+      display: block;
+      margin: 0 auto;
+      width: 220px;
+      outline: none;
+      text-align: center;
     }
   }
 }
