@@ -13,7 +13,7 @@
   </h5>
   <h4>
     genre:
-    <span class="genre" v-for="genre in film.genre" :key="genre.id">{{ genre.name }}</span>
+    <span class="genre" v-for="genre in film.genres" :key="genre.id">{{ genre.name }}</span>
   </h4>
   <h3>Synopsis</h3>
   <p>{{film.synopsis}}</p>

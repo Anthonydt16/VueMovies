@@ -16,87 +16,13 @@
 
 <script>
 import Card from "@/components/card.vue";
-
+import { useMoviesStore } from "@/stores/movies";
 export default {
   name: "accueil",
   components: {Card},
   data() {
     return {
-      movies: [
-        {
-          id: 1,
-          name: "Le seigneur des anneaux",
-          year: 2001,
-          realisateur: {
-            id: 1,
-            name: "Peter Jackson",
-            nationality: "New Zealand",
-            birth: 1961
-          },
-          genre:[
-            {
-              id: 1,
-              name: "Fantasy"
-            },
-            {
-              id: 2,
-              name: "Aventure"
-            }
-          ],
-          rating: 4.5,
-          poster: "https://proxymedia.woopic.com/api/v1/images/822%2Faudiovisual%2Fmovie%2F277%2F3b7%2Fc6952dbfb3b7cdfcd043329e92%2Fmovies-289305-21954066.jpg",
-          synopsis: "Frodon Sacquet, un Hobbit, hérite d'un puissant anneau. Il est alors entraîné dans une aventure épique pour détruire l'anneau avant que Sauron, le Seigneur des Ténèbres, ne le récupère."
-        },
-        {
-           id: 2,
-          name: "Le seigneur des anneaux 2",
-          year: 2002,
-          realisateur: {
-            id: 1,
-            name: "Peter Jackson",
-            nationality: "New Zealand",
-            birth: 1961
-          },
-          genre:[
-            {
-              id: 1,
-              name: "Fantasy"
-            },
-            {
-              id: 2,
-              name: "Aventure"
-            }
-          ],
-          rating: 4.5,
-          poster: "https://proxymedia.woopic.com/api/v1/images/822%2Faudiovisual%2Fmovie%2F277%2F3b7%2Fc6952dbfb3b7cdfcd043329e92%2Fmovies-289305-21954066.jpg",
-          synopsis: "Frodon Sacquet, un Hobbit, hérite d'un puissant anneau. Il est alors entraîné dans une aventure épique pour détruire l'anneau avant que Sauron, le Seigneur des Ténèbres, ne le récupère."
-
-        },
-        {
-           id: 3,
-          name: "Le seigneur des anneaux 3",
-          year: 2003,
-          realisateur: {
-            id: 1,
-            name: "Peter Jackson",
-            nationality: "New Zealand",
-            birth: 1961
-          },
-          genre:[
-            {
-              id: 1,
-              name: "Fantasy"
-            },
-            {
-              id: 2,
-              name: "Aventure"
-            }
-          ],
-          rating: 4.5,
-          poster: "https://proxymedia.woopic.com/api/v1/images/822%2Faudiovisual%2Fmovie%2F277%2F3b7%2Fc6952dbfb3b7cdfcd043329e92%2Fmovies-289305-21954066.jpg",
-          synopsis: "Frodon Sacquet, un Hobbit, hérite d'un puissant anneau. Il est alors entraîné dans une aventure épique pour détruire l'anneau avant que Sauron, le Seigneur des Ténèbres, ne le récupère."
-        }
-      ],
+      dataMovies: useMoviesStore(),
       moviesFiltered: [],
       name: "",
       year: 0,
@@ -105,12 +31,92 @@ export default {
   },
   methods: {
     searchMovie() {
-      this.moviesFiltered =  this.movies.filter(movie => movie.name.includes(this.search))
+      this.moviesFiltered =  this.dataMovies.getMovies.filter(movie => movie.name.includes(this.search))
     },
 
   },
   mounted() {
-    this.moviesFiltered = this.movies
+
+    this.dataMovies.setMovies(
+        [
+          {
+            id: 1,
+            name: "Le seigneur des anneaux",
+            year: 2001,
+            realisateur: {
+              id: 1,
+              name: "Peter Jackson",
+              nationality: "New Zealand",
+              birth: 1961
+            },
+            genres:[
+              {
+                id: 1,
+                name: "Fantasy"
+              },
+              {
+                id: 2,
+                name: "Aventure"
+              }
+            ],
+            rating: 4.5,
+            poster: "https://proxymedia.woopic.com/api/v1/images/822%2Faudiovisual%2Fmovie%2F277%2F3b7%2Fc6952dbfb3b7cdfcd043329e92%2Fmovies-289305-21954066.jpg",
+            synopsis: "Frodon Sacquet, un Hobbit, hérite d'un puissant anneau. Il est alors entraîné dans une aventure épique pour détruire l'anneau avant que Sauron, le Seigneur des Ténèbres, ne le récupère."
+          },
+          {
+            id: 2,
+            name: "Le seigneur des anneaux 2",
+            year: 2002,
+            realisateur: {
+              id: 1,
+              name: "Peter Jackson",
+              nationality: "New Zealand",
+              birth: 1961
+            },
+            genres:[
+              {
+                id: 1,
+                name: "Fantasy"
+              },
+              {
+                id: 2,
+                name: "Aventure"
+              }
+            ],
+            rating: 4.5,
+            poster: "https://proxymedia.woopic.com/api/v1/images/822%2Faudiovisual%2Fmovie%2F277%2F3b7%2Fc6952dbfb3b7cdfcd043329e92%2Fmovies-289305-21954066.jpg",
+            synopsis: "Frodon Sacquet, un Hobbit, hérite d'un puissant anneau. Il est alors entraîné dans une aventure épique pour détruire l'anneau avant que Sauron, le Seigneur des Ténèbres, ne le récupère."
+
+          },
+          {
+            id: 3,
+            name: "Le seigneur des anneaux 3",
+            year: 2003,
+            realisateur: {
+              id: 1,
+              name: "Peter Jackson",
+              nationality: "New Zealand",
+              birth: 1961
+            },
+            genres:[
+              {
+                id: 1,
+                name: "Fantasy"
+              },
+              {
+                id: 2,
+                name: "Aventure"
+              }
+            ],
+            rating: 4.5,
+            poster: "https://proxymedia.woopic.com/api/v1/images/822%2Faudiovisual%2Fmovie%2F277%2F3b7%2Fc6952dbfb3b7cdfcd043329e92%2Fmovies-289305-21954066.jpg",
+            synopsis: "Frodon Sacquet, un Hobbit, hérite d'un puissant anneau. Il est alors entraîné dans une aventure épique pour détruire l'anneau avant que Sauron, le Seigneur des Ténèbres, ne le récupère."
+          }
+        ]
+    );
+
+    this.moviesFiltered = this.dataMovies.getMovies
+
   },
   watch: {
     search() {
