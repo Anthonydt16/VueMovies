@@ -9,7 +9,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 const pinia = createPinia()
 const routes = [
     { path: '/', component: accueil },
-    { path: '/ajout', component: ajout }
+    { path: '/ajout', component: ajout },
 ]
 
 
