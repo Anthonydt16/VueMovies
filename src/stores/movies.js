@@ -17,6 +17,9 @@ export const useMoviesStore = defineStore('movies', {
         },
         addMovie(movie) {
             this.movies.push(movie)
+        },
+        deleteMovie(movie) {
+            this.movies = this.movies.filter(m => m.id !== movie.id)
         }
     },
     watch: {

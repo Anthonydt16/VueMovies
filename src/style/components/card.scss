@@ -76,6 +76,13 @@ img{
       transform: scale(1.03) translateX(-50%);
       color: $black;
     }
+    &.delete{
+      background: #c32222;
+      &:hover{
+        background: #a11c1c;
+      }
+      bottom: 58px;
+    }
   }
   &:after{
     content: "";

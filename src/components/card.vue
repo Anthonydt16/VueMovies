@@ -17,17 +17,30 @@
   </h4>
   <h3>Synopsis</h3>
   <p>{{film.synopsis}}</p>
-  <button >Modifier</button>
 </template>
 
 <script>
+import { useMoviesStore} from "@/stores/movies";
 export default {
   name: "card",
   props:{
     film: {
       type: Object,
       required: true
+    },
+modif: {
+      type: Boolean,
+      required: false,
+      default: true
     }
+  },
+  data() {
+    return {
+      dataMovies: useMoviesStore(),
+    }
+  },
+  methods: {
+
   }
 }
 </script>

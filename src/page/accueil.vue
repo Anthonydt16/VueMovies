@@ -5,7 +5,7 @@
       <input type="text" v-model="search">
       <div class="container_cards">
         <div class="card" v-for="movie in moviesFiltered">
-          <Card :film="movie" />
+          <Card :film="movie" :modif="false" />
         </div>
       </div>
 
@@ -33,6 +33,7 @@ export default {
     searchMovie() {
       this.moviesFiltered =  this.dataMovies.getMovies.filter(movie => movie.name.includes(this.search))
     },
+
 
   },
   mounted() {

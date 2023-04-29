@@ -12,7 +12,6 @@ const routes = [
     { path: '/ajout', component: ajout },
 ]
 
-
 const router = createRouter({
     history: createWebHistory(),
     routes,
