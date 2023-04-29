@@ -71,7 +71,8 @@ export default {
   methods: {
      deleteMovie(movie){
          this.movies = this.movies.filter(m => m.id !== movie.id)
-         //Supprimer le film dans movies
+         this.dataMovies.setMovies(this.movies)
+         this.dataMovies.saveMovies()
 
      },
     genreDelete(genre) {
@@ -123,11 +124,10 @@ export default {
         if (buttonAdd.innerText === 'Modifier') {
           //modifier le film
           this.movies.splice(this.movies.indexOf(this.movieEdit), 1)
+          this.dataMovies.deleteMovie(this.movieEdit)
           this.movies.push(this.movie)
           buttonAdd.innerHTML = "Ajouter"
-          //vider le formulaire
-
-
+          this.dataMovies.addMovie(this.movie)
         } else {
             let movie = {
                 id: this.movies.length + 1,
@@ -145,14 +145,15 @@ export default {
                 synopsis: this.movie.synopsis,
             }
             this.dataMovies.addMovie(movie)
+            console.log(movie)
             console.log(this.dataMovies.getMovies)
         }
+        this.dataMovies.saveMovies()
 
     }
   },
   mounted() {
     this.movies = this.dataMovies.getMovies
-      console.log(this.id)
   }
 }
 </script>
